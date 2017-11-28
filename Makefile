@@ -1,27 +1,27 @@
 CC = gcc
-MOD	= ./mod/
 NAME = libft.a
-ISALPHA = $(MOD)ft_isalpha/ft_isalpha.o
-OBJS = $(ISALPHA)
+SRCS = ft_isalpha.c
+IND = ./includes/
+OBJS := $(patsubst %.c, %.o, $(SRCS))
 TESTD = ./tests/
 TEST = ft_isalpha_test
-CFLAGS = $(CC) -c -Wall -Werror -Wextra
-OFLAGS = $(CC) $(TEST).o -L. -lft -o $(TEST) 
+CFLAGS = -c -Wall -Werror -Wextra
+OFLAGS = $(TEST).o -L. -lft -o $(TEST) 
 
 $(NAME) : $(OBJS)
 	ar rc $(NAME) $(OBJS)
 
-$(OBJS):
-	+$(MAKE) -C $(MOD)ft_isalpha/
-
+$(OBJS): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS)
+	
 test : $(TESTD)$(TEST).o
-	$(OFLAGS)
+	$(CC) $(OFLAGS)
 
 $(TESTD)$(TEST).o : $(TESTD)$(TEST).c
-	$(CFLAGS) $(TESTD)$(TEST).c
+	$(CC) $(CFLAGS) $(TESTD)$(TEST).c
 
 clean : 
-	find . -name '*.o' -delete
+	rm -f *.o
 
 fclean :
 	make clean;
