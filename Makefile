@@ -4,9 +4,9 @@ NAME = libft.a
 ISALPHA = $(MOD)ft_isalpha/ft_isalpha.o
 OBJS = $(ISALPHA)
 TESTD = ./tests/
-TEST = ft_is_alpha_test
+TEST = ft_isalpha_test
 CFLAGS = $(CC) -c -Wall -Werror -Wextra
-OFLAGS = $(CC) $(TESTD)$(TEST).o -L. -lft -o $(TEST) 
+OFLAGS = $(CC) $(TEST).o -L. -lft -o $(TEST) 
 
 $(NAME) : $(OBJS)
 	ar rc $(NAME) $(OBJS)
@@ -14,9 +14,11 @@ $(NAME) : $(OBJS)
 $(OBJS):
 	+$(MAKE) -C $(MOD)ft_isalpha/
 
-test : $(TESTD)$(TEST).c
-	$(CFLAGS) $(TESTD)$(TEST).c
+test : $(TESTD)$(TEST).o
 	$(OFLAGS)
+
+$(TESTD)$(TEST).o : $(TESTD)$(TEST).c
+	$(CFLAGS) $(TESTD)$(TEST).c
 
 clean : 
 	find . -name '*.o' -delete
