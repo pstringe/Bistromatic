@@ -6,10 +6,9 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:54:03 by pstringe          #+#    #+#             */
-/*   Updated: 2017/11/27 15:27:40 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/11/28 16:02:19 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include	"ft_isalpha.h"
 
 int		ft_isalpha(int c)
 {
