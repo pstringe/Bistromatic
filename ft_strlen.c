@@ -6,11 +6,11 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:41:41 by pstringe          #+#    #+#             */
-/*   Updated: 2017/11/29 12:44:28 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/02 18:03:03 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int		ft_strlen(const char *str)
 {
 	int i;
 

@@ -6,11 +6,9 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:22:51 by pstringe          #+#    #+#             */
-/*   Updated: 2017/11/29 14:28:52 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/02 13:51:31 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "ft_toupper.h"
 
 int		ft_toupper(int c)
 {

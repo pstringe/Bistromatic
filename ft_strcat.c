@@ -6,24 +6,21 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 12:36:32 by pstringe          #+#    #+#             */
-/*   Updated: 2017/11/30 16:05:46 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/03 16:55:37 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_strcat.h"
+#include "libft.h"
 
-char	*ft_strcat(char *restrict s1, const char *restrict s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	int		i;
-	int		offset;
 
-	offset = ft_strlen(s1);
-	i = -1;
-	while (s1[++i] != '\0')
+	char *str = s1;
+	while (*str != '\0')
 	{
-		s1[i + offset] = s2[i];
+		str++;
 	}
-	
-	s1[offset + i] = '\0';
+
+	ft_strcpy(str, s2);
 	return (s1);
 }

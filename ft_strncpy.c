@@ -6,25 +6,27 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:35:02 by pstringe          #+#    #+#             */
-/*   Updated: 2017/11/29 18:34:12 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/03 18:15:49 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *s1, const char *s2, size_t len)
 {
-	size_t i;
+	char		*dst;
+	const char	*src;
 
-	i = 0;
-	while (i < len && src[i] != '\0')
+	src = s2;
+	dst = s1;
+	while (len > 0)
 	{
-		dst[i] = src[i];
-		i ++;
+		len--;
+		if((*dst++ = *src++) == '\0')
+		{
+			ft_memset(dst, '\0', len);
+			break;
+		}
 	}
-	while (i < len)
-	{
-		dst[i] = '\0';
-		i ++;
-	}
-	return (dst);
+	return (s1);
+		
 }
