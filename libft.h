@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/04 18:38:01 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/04 18:48:56 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strncpy(char *dst, const char *src, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_strdup(const char *str);
-void	*(ft_memset)(void *s, int c, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
