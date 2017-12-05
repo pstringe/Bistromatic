@@ -2,14 +2,11 @@
 #include "libft.h"
 
 int main() {
-	char	*str;
-	char	buf[0xF0];
-	char	*res;
-		
-	str = "AAAA";
-	buf[4] = 0;
+	char *src = "the cake is a lie !\0I'm hidden lol\r\n";
 
-	res = ft_strcat(buf, str);
+	char re = *strrchr(src, ' ');
+	char ft = *ft_strrchr(src, ' ');
 
-	printf("%s\n", res);
+	printf("expected:\t%c\n\n",re);
+	printf("\n-----\ndebuging:\t%c\n\n", ft);
 }
