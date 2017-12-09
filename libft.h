@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/08 13:22:09 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/08 14:09:03 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_strcpy(char *dst, const char *src);
 size_t	ft_strlen(const char *str);
 char	*ft_strncat(char *s1, const char *s2, size_t n);
 char	*ft_strncpy(char *dst, const char *src, size_t len);
+char	*ft_strstr(const char *big, const char *little);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_strdup(const char *str);
