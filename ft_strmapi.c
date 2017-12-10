@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 18:49:16 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/09 18:43:13 by pstringe         ###   ########.fr       */
+/*   Created: 2017/12/09 15:36:36 by pstringe          #+#    #+#             */
+/*   Updated: 2017/12/09 18:32:42 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	little = NULL;
-	return ((char *)big);
+	char	*str;
+	size_t	i;
+
+	if (s)
+	{	
+		str = ft_strnew(ft_strlen(s));
+		if (!str)
+		{
+			return (NULL);
+		}
+
+		i = 0;
+		while (*(s + i))
+		{
+			*(str + i) = (*f)( i, *(s + i));
+			i++;
+		}
+		*(str + i) = '\0';
+		return(str);
+	}
+	return (NULL);
 }
+
