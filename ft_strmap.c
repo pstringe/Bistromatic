@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/09 14:15:54 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/09 15:59:53 by pstringe         ###   ########.fr       */
+/*   Created: 2017/12/09 15:36:36 by pstringe          #+#    #+#             */
+/*   Updated: 2017/12/09 16:50:29 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char *str;
+	char	*str;
+	int		i;
 
-	str = ft_memalloc(size + 1);
-	if (!str)
-	{
-		return (NULL);
+	if (s)
+	{	
+		str = ft_strnew(ft_strlen(s));
+		if (!str)
+		{
+			return (NULL);
+		}
+
+		i = 0;
+		while (*(s + i))
+		{
+			*(str + i) = (*f)(*(s + i));
+			i++;
+		}
+		*(str + i) = '\0';
+		return(str);
 	}
-	else
-	{
-		ft_memset(str, '\0', size + 1);
-	}
-	return (str);
+	return (NULL);
 }
+

@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/08 14:09:03 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/09 15:44:40 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void 	*ft_memalloc(size_t size);
+char	*ft_strnew(size_t size);
 #endif
