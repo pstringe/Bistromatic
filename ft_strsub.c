@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 19:36:40 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/11 14:04:38 by pstringe         ###   ########.fr       */
+/*   Created: 2017/12/11 14:15:23 by pstringe          #+#    #+#             */
+/*   Updated: 2017/12/11 14:37:31 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	size_t i;
+	char	*sub_str;
+	size_t	i;
 
+	if ((sub_str = ft_strnew(len)) == NULL)
+	{
+		return (NULL);
+	}
 	i = 0;
-	if (!*s1 && !*s2)
+	while (len--)
 	{
-		return (1);
+		sub_str[i++] = s[start++];
 	}
-	else if (n == 0 || (!s1 && s2) || (!s2 && s1))
-	{
-		return (0);
-	}
-
-	while (*(s1 + i) == *(s2 + i) && *(s1 + i) && i < n)
-	{
-		i++;
-	}
-	if (i == n)
-	{
-		return (1);
-	}
-	return (0);
+	sub_str[i] = '\0';
+	return (sub_str);
 }
