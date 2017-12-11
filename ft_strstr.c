@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:49:16 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/09 18:43:13 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/11 12:53:07 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,26 @@
 
 char	*ft_strstr(const char *big, const char *little)
 {
-	little = NULL;
-	return ((char *)big);
+	size_t i;
+	size_t j;
+
+	i = 0;
+	if (*little == '\0')
+	{
+		return ((char *)big);
+	}
+	while (*(big + i))
+	{
+		j = 0;
+		while (*(little + j) == *(big + i + j) && *(little + j))
+		{
+			j++;
+		}
+		if (j == ft_strlen(little))
+		{
+			return ((char *)(big + i));
+		}
+		i++;
+	}
+	return (NULL);
 }
