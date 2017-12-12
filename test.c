@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:09:35 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/11 15:31:07 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:46:04 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -14,16 +14,11 @@
 
 int		main(int argc, char **argv)
 {
-	char const 	*s1;
-	char const 	*s2;
 	char		*res;
 
-	if (argc == 3)
+	if (argc == 2)
 	{
-		s1 = *(argv + 1);
-		s2 = *(argv + 2);
-
-		res = ft_strjoin(s1, s2);
+		res = ft_strtrim(argv[1]);
 		printf("result:\t%s\n", res);
 	}	
 }
