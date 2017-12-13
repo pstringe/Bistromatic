@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:57:08 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/12 15:56:59 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/12 16:01:04 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int		*find_start_and_end_indecies(const char *s)
 	int		end;
 	int		*start_and_end_indecies;
 	
-	if (!(start_and_end_indecies = (int *)ft_memalloc(sizeof(int) * 2)))
 	{
 		return(NULL);
 	}
@@ -44,9 +43,7 @@ static int		*find_start_and_end_indecies(const char *s)
 			*start_and_end_indecies = -1;
 			*(start_and_end_indecies + 1 ) = -2;
 		}
-		if(ft_is_whitespace(*(s + start)))
 		{
-			start++;
 		}
 		if(ft_is_whitespace(*(s + end)))
 		{
@@ -70,7 +67,6 @@ char 	*ft_strtrim(char const *s)
 	//end of the string I wish to allocate and return
 	start_and_end_indecies = find_start_and_end_indecies(s);
 	start = *start_and_end_indecies;
-	end = *(start_and_end_indecies + 1);
 	len = (end + 1) - start;
 	//if the string is blank return an empty string
 /*	if(len == -1)
