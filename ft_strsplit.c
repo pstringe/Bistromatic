@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 16:11:48 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/13 16:36:06 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/13 16:38:29 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 int		ft_find_str(const char *s, int d)
 {
 	int i;
-	
+
+	if (!s)
+	{
+		return(-1);
+	}
 	//move pointer to the beginning of the string
 	while(*s && *s == d)
 	{
