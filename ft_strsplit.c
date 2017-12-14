@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 16:11:48 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/13 17:05:30 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/13 17:17:32 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int		main(int argc, char **argv)
 		if (*res >= 0)
 		{
 			str = ft_strnew(*res + 1);
-			ft_memcpy(str, *(argv + *(res + 1)), *res);
-			printf("strlen:\t%d\ndelimlen:\t%d\nstring:\t%s\n\n", *res, *(res + 1), str);
+			ft_memcpy(str, &argv[1][*(res + 1)], *res);
+			printf("strlen:\t\t%d\ndelimlen:\t%d\nstring:\t\t%s\n\n", *res, *(res + 1), str);
 		}
 	}
 }
