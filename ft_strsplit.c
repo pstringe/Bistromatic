@@ -6,14 +6,14 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 16:11:48 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/13 16:27:03 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/13 16:36:06 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int		ft_find_str(const char *s)
+int		ft_find_str(const char *s, int d)
 {
 	int i;
 	
@@ -23,11 +23,13 @@ int		ft_find_str(const char *s)
 		s++;
 	}
 	//iterrate until hit the next delimeter
-	while(*s++ != d)
+	i = 0;
+	while( *s && *s != d)
 	{
+		s++;
 		i++;
 	}
-	return(i)
+	return(i);
 }
 
 int		main(int argc, char **argv)
@@ -35,7 +37,7 @@ int		main(int argc, char **argv)
 	int res;
 	if (argc == 2)
 	{
-		res = ft_find_str();
-		printf("result:\t%d\n", res,);
+		res = ft_find_str(argv[1], ' ');
+		printf("result:\t%d\n", res);
 	}
 }
