@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 15:09:35 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/12 15:46:04 by pstringe         ###   ########.fr       */
+/*   Created: 2017/12/13 19:39:38 by pstringe          #+#    #+#             */
+/*   Updated: 2017/12/13 19:54:47 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include "libft.h"
 
-int		main(int argc, char **argv)
+void	ft_putnbr_fd(long long n, int fd)
 {
-	char		*res;
+	long long tmp;
 
-	if (argc == 2)
+	tmp = n;
+	if (tmp < 0)
 	{
-		res = ft_strtrim(argv[1]);
-		printf("result:\t%s\n", res);
-	}	
+		tmp *= -1 ;
+		ft_putchar('-');
+	}
+	if (tmp >= 10)
+	{
+		ft_putnbr(tmp / 10);
+		ft_putnbr(tmp % 10);
+	}
+	else
+	{
+		write(fd, &tmp , 1);
+	}
 }
