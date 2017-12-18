@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/13 19:34:49 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:07:26 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+
+typedef struct	s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct slist	*next;
+}					t_list;
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -37,6 +44,8 @@ char	*ft_strrchr(const char *s, int c);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_nbrlen(int nbr);
+unsigned int		ft_absval(int n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void 	*ft_memalloc(size_t size);
 char	*ft_strnew(size_t size);
@@ -57,5 +66,9 @@ void	ft_putnbr(long long n);
 void	ft_putstr(char *str);
 void	ft_putendl(char *str);
 void	ft_putchar_fd(char c, int fd);
+int		ft_atoi(const char *str);
+char*	ft_itoa(int n);
 void	ft_putstr_fd(char const *str, int fd);
+t_list	*ft_lstnew(void const *content, size_t content_size);
+
 #endif
