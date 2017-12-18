@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 19:11:53 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/17 19:21:05 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/18 09:29:27 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,15 @@ int		ft_atoi(const char *str)
 	{
 		i++;
 	}
-	while (str[i] && str[i] > '0' && str[i] <= '9')
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10;
+		nb = nb + str[i] - '0';
+		i ++;
 	}
+	if (flag == 1)
+	{
+		return (-nb);
+	}
+	return (nb);
 }
