@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/18 14:07:26 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:33:30 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,5 @@ int		ft_atoi(const char *str);
 char*	ft_itoa(int n);
 void	ft_putstr_fd(char const *str, int fd);
 t_list	*ft_lstnew(void const *content, size_t content_size);
-
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 #endif
