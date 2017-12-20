@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 15:36:36 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/09 16:50:29 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 11:04:23 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	int		i;
 
 	if (s)
-	{	
+	{
 		str = ft_strnew(ft_strlen(s));
 		if (!str)
 		{
 			return (NULL);
 		}
-
 		i = 0;
 		while (*(s + i))
 		{
@@ -32,8 +31,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 			i++;
 		}
 		*(str + i) = '\0';
-		return(str);
+		return (str);
 	}
 	return (NULL);
 }
-
