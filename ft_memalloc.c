@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 13:06:31 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/08 13:23:31 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 11:07:53 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memalloc(size_t size)
 	memory = (void *)malloc(size);
 	if (memory == NULL)
 	{
-		return(NULL);
+		return (NULL);
 	}
-	ft_memset (memory, 0, size);
-	return(memory);
+	ft_memset(memory, 0, size);
+	return (memory);
 }
