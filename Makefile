@@ -55,7 +55,11 @@ SRCS = ft_bzero.c\
 	   ft_memcmp.c	\
 	   ft_memmove.c	\
 	   ft_memdel.c	\
-	   ft_memalloc.c
+	   ft_memalloc.c \
+	   ft_absval.c \
+	   ft_memset.c \
+	   ft_nbrlen.c \
+	   ft_strsub.c
 
 OBJS := $(patsubst %.c, %.o, $(SRCS))
 CFLAGS = -c -Wall -Werror -Wextra
