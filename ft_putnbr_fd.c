@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 19:39:38 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/17 19:10:38 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 10:43:22 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnbr_fd(long long n, int fd)
 	tmp = n;
 	if (tmp < 0)
 	{
-		tmp *= -1 ;
+		tmp *= -1;
 		ft_putchar_fd('-', fd);
 	}
 	if (tmp >= 10)
