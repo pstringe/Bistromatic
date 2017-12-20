@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:57:08 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/12 16:16:14 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 13:43:18 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int		ft_is_whitespace(char c)
 {
-	if( c == ' ' || c == '\t' || c == '\n')
+	if (c == ' ' || c == '\t' || c == '\n')
 	{
 		return (1);
 	}
 	return (0);
 }
 
-char 	*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
-	char 	*str;
+	char	*str;
 	int		end;
 	int		start;
 
@@ -33,7 +33,6 @@ char 	*ft_strtrim(char const *s)
 	}
 	start = 0;
 	end = ft_strlen(s) - 1;
-
 	while (ft_is_whitespace(*(s + start)))
 	{
 		start++;
@@ -42,11 +41,10 @@ char 	*ft_strtrim(char const *s)
 	{
 		end--;
 	}
-	if(*(s + start) == '\0')
+	if (*(s + start) == '\0')
 	{
 		return (ft_strnew(0));
 	}
 	str = ft_strsub(s, start, end - start + 1);
 	return (str);
 }
-
