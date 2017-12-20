@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 19:36:40 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/09 19:44:12 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 13:37:46 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	{
 		return (0);
 	}
-
 	while (*(s1 + i) == *(s2 + i) && *(s1 + i) && i < n)
 	{
 		i++;
