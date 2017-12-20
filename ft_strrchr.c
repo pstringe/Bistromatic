@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 15:28:13 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/04 17:27:54 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 10:13:01 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ char	*ft_strrchr(const char *s, int c)
 {
 	char	cc;
 	char	*match;
-	
+
 	match = 0;
 	cc = c;
-
 	while (*s || *s == '\0')
 	{
 		if (*s == cc)
@@ -28,7 +27,7 @@ char	*ft_strrchr(const char *s, int c)
 		}
 		if (*s == '\0')
 		{
-			if(match == 0)
+			if (match == 0)
 			{
 				return (NULL);
 			}
@@ -36,7 +35,7 @@ char	*ft_strrchr(const char *s, int c)
 			{
 				return (match);
 			}
-		}	
+		}
 		s++;
 	}
 	return (match);
