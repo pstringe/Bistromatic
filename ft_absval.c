@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:44:00 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/18 11:15:04 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 12:44:39 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned int	ft_absval(int n)
 {
-	if(n < 0)
+	if (n < 0)
 	{
 		return ((unsigned int)-n);
 	}
