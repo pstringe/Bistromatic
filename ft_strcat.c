@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 12:36:32 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/03 16:55:37 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 13:58:37 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
+	char *str;
 
-	char *str = s1;
+	str = s1;
 	while (*str != '\0')
 	{
 		str++;
 	}
-
 	ft_strcpy(str, s2);
 	return (s1);
 }
