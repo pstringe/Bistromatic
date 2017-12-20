@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:04:42 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/18 11:21:02 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/20 14:08:37 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static char		*strnew(int neg, size_t size)
 {
 	char *str;
+
 	if ((str = (char *)malloc(sizeof(char) * size + 1)))
 	{
 		if (neg)
@@ -26,7 +27,7 @@ static char		*strnew(int neg, size_t size)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char			*str;
 	int				neg;
@@ -41,9 +42,9 @@ char	*ft_itoa(int n)
 	}
 	len = ft_nbrlen(n) + neg;
 	j = ft_absval(n);
-	if((str = strnew(neg, (size_t)len)))
+	if ((str = strnew(neg, (size_t)len)))
 	{
-		i = len -1;
+		i = len - 1;
 		while (i >= neg)
 		{
 			str[i] = (char)(j % 10) + 48;
