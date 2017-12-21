@@ -6,24 +6,24 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:49:16 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/21 11:23:05 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/21 14:47:53 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *sm, size_t len)
 {
 	size_t i;
 
-	if (*little == '\0')
+	if (*sm == '\0')
 	{
 		return ((char *)big);
 	}
-	i = ft_strlen(little);
+	i = ft_strlen(sm);
 	while (*big != '\0' && len >= i)
 	{
-		if (ft_strncmp(big, little, i) == 0)
+		if (ft_strncmp(big, sm, i) == 0)
 		{
 			return ((char *)big);
 		}

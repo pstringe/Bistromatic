@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/21 12:07:50 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/21 14:46:30 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ size_t				ft_strlen(const char *str);
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strstr(const char *big, const char *little);
+char				*ft_strnstr(const char *big, const char *sm, size_t len);
+char				**ft_strsplit(char const *s, char c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_strdup(const char *str);
@@ -47,6 +49,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_nbrlen(int nbr);
 unsigned int		ft_absval(int n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
+void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memalloc(size_t size);
 char				*ft_strnew(size_t size);
 void				ft_memdel(void **ap);
@@ -64,15 +67,20 @@ char				*ft_strtrim(char const *s);
 void				ft_putchar(char c);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				ft_putnbr(long long n);
+void				ft_putnbr_fd(long long n, int fd);
 void				ft_putstr(char *str);
 void				ft_putendl(char *str);
+void				ft_putendl_fd(char const *s, int fd);
 void				ft_putchar_fd(char c, int fd);
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
 void				ft_putstr_fd(char const *str, int fd);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-
+void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
+t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+int					ft_strlcat(char *dst, char const *src, size_t size);
+void				ft_bzero(void *s, size_t n);
 #endif
