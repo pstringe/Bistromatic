@@ -80,6 +80,3 @@ fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
-
-debug:
-	gcc -Wextra -Wall -Werror $(SRCS) test.c -v -g -o test
