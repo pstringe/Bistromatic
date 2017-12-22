@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:21:38 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/08 13:38:56 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/22 09:32:19 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int		ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	len;
-	size_t	cpy;
-	size_t	lft;
+	size_t	length_of_src;
+	size_t	length_of_dst;
+	size_t	space_left_in_buffer;
 
-	cpy = ft_strlen(dst);
-	len = ft_strlen(src);
-	lft = size - cpy - 1;
-	if (cpy < size)
+	length_of_dst = ft_strlen(dst);
+	length_of_src = ft_strlen(src);
+	space_left_in_buffer = size - length_of_dst - 1;
+	if (length_of_dst < size)
 	{
-		ft_memcpy((dst + cpy), src, lft);
+		ft_memcpy((dst + length_of_dst), src, space_left_in_buffer);
 		*(dst + (size - 1)) = '\0';
-		return (cpy + len);
+		return (length_of_dst + length_of_src);
 	}
-	return (size + len);
+	return (size + length_of_src);
 }
