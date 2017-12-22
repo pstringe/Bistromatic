@@ -6,19 +6,19 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:04:42 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/20 14:08:37 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/22 11:16:41 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*strnew(int neg, size_t size)
+static char		*strnew(int is_negitive, size_t size)
 {
 	char *str;
 
 	if ((str = (char *)malloc(sizeof(char) * size + 1)))
 	{
-		if (neg)
+		if (is_negitive)
 		{
 			str[0] = '-';
 		}
@@ -30,22 +30,22 @@ static char		*strnew(int neg, size_t size)
 char			*ft_itoa(int n)
 {
 	char			*str;
-	int				neg;
-	int				len;
+	int				is_negitive;
+	int				length_of_number;
 	int				i;
 	unsigned int	j;
 
-	neg = 0;
+	is_negitive = 0;
 	if (n < 0)
 	{
-		neg = 1;
+		is_negitive = 1;
 	}
-	len = ft_nbrlen(n) + neg;
+	length_of_number = ft_nbrlen(n) + is_negitive;
 	j = ft_absval(n);
-	if ((str = strnew(neg, (size_t)len)))
+	if ((str = strnew(is_negitive, (size_t)length_of_number)))
 	{
-		i = len - 1;
-		while (i >= neg)
+		i = length_of_number - 1;
+		while (i >= is_negitive)
 		{
 			str[i] = (char)(j % 10) + 48;
 			j = j / 10;
