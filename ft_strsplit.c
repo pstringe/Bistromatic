@@ -6,76 +6,76 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 16:11:48 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/20 11:20:44 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/22 10:26:30 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static int	ft_word_count(const char *s, char c)
+static int	ft_count_words(const char *str, char delimiter)
 {
-	int flag;
-	int word;
+	int is_not_delimeter;
+	int number_of_words;
 
-	flag = 0;
-	word = 0;
-	if (!s || !c)
+	is_not_delimeter = 0;
+	number_of_words = 0;
+	if (!str || !delimiter)
 	{
 		return (0);
 	}
-	while (*s)
+	while (*str)
 	{
-		if (*s == c && flag == 1)
+		if (*str == delimiter && is_not_delimeter)
 		{
-			flag = 0;
+			is_not_delimeter = 0;
 		}
-		if (*s != c && flag == 0)
+		if (*str != delimiter && !is_not_delimeter)
 		{
-			flag = 1;
-			word++;
+			is_not_delimeter = 1;
+			number_of_words++;
 		}
-		s++;
+		str++;
 	}
-	return (word);
+	return (number_of_words);
 }
 
-static int	ft_wlen(const char *s, char c)
+static int	ft_word_len(const char *str, char delimiter)
 {
-	int len;
+	int length_of_word;
 
-	len = 0;
-	while (*s != c && *s != '\0')
+	length_of_word = 0;
+	while (*str != delimiter && *str != '\0')
 	{
-		len++;
-		s++;
+		length_of_word++;
+		str++;
 	}
-	return (len);
+	return (length_of_word);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *str, char delimiter)
 {
 	int		i;
-	int		nb_words;
-	char	**array;
+	int		number_of_words;
+	char	**splitstr;
 
 	i = 0;
-	nb_words = ft_word_count((const char *)s, c);
-	array = (char **)malloc(sizeof(*array) * (nb_words + 1));
-	if (array == NULL)
+	number_of_words = ft_count_words(str, delimiter);
+	splitstr = (char **)malloc(sizeof(*splitstr) * (number_of_words + 1));
+	if (splitstr == NULL)
 	{
 		return (NULL);
 	}
-	while (nb_words--)
+	while (number_of_words--)
 	{
-		while (*s == c && *s != '\0')
+		while (*str == delimiter && *str != '\0')
 		{
-			s++;
+			str++;
 		}
-		array[i] = ft_strsub((const char *)s, 0, ft_wlen((const char *)s, c));
-		s = s + ft_wlen((const char *)s, c);
+		splitstr[i] = ft_strsub(str, 0, ft_word_len(str, delimiter));
+		str = str + ft_word_len((const char *)str, delimiter);
 		i++;
 	}
-	array[i] = NULL;
-	return (array);
+	splitstr[i] = NULL;
+	return (splitstr);
 }
