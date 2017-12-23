@@ -60,7 +60,8 @@ SRCS = ft_bzero.c\
 	   ft_memset.c \
 	   ft_nbrlen.c \
 	   ft_strsub.c \
-	   ft_is_whitespace.c
+	   ft_is_whitespace.c\
+	   ft_two_d_free.c
 
 OBJS := $(patsubst %.c, %.o, $(SRCS))
 CFLAGS = -c -Wall -Werror -Wextra
