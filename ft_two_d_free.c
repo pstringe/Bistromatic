@@ -6,11 +6,11 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 16:46:50 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/22 16:50:56 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/22 17:08:21 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_two_d_free(**void array)
+void	ft_two_d_free(void **array)
 {
 	while(*array)
 	{
