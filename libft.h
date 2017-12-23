@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/22 17:12:32 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/22 17:44:15 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef	struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+t_list				**ft_lstsethead(t_list *elem);
 void				ft_two_d_free(void **array);
 int					ft_is_whitespace(int c);
 int					ft_isalnum(int c);
