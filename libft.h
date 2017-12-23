@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/22 16:53:31 by pstringe         ###   ########.fr       */
+/*   Updated: 2017/12/22 17:12:32 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,6 @@ typedef	struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-typedef	struct		s_member
-{
-	char			member_name[100];
-	char			member_type[22];
-	struct s_member	*next_member;
-}					t_member;
-typedef	struct		s_name
-{
-	char			struct_name[100];
-	char 			struct_alias[100];
-  	struct t_member	*first_member;
-}					t_name;
-typedef	struct		s_struct
-{
-	struct t_name	*name;
-	struct t_member **HEAD;
-}					t_struct;
 void				ft_two_d_free(void **array);
 int					ft_is_whitespace(int c);
 int					ft_isalnum(int c);
