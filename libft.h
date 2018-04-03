@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:59:29 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/22 17:44:15 by pstringe         ###   ########.fr       */
+/*   Updated: 2018/04/02 18:50:04 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-
+# include "get_next_line.h"
 typedef	struct		s_list
 {
 	void			*content;
@@ -85,4 +85,7 @@ void				ft_lstadd(t_list **alst, t_list *new);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_strlcat(char *dst, char const *src, size_t size);
 void				ft_bzero(void *s, size_t n);
+int					get_next_line(const int fd, char **line);
+void				ft_lstadd_tail(t_list **alst, t_list *new);
+int					ft_lstlen(t_list *lst);
 #endif

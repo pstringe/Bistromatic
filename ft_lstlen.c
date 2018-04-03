@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_whitespace.c                                 :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/22 10:43:49 by pstringe          #+#    #+#             */
-/*   Updated: 2017/12/22 11:04:17 by pstringe         ###   ########.fr       */
+/*   Created: 2018/04/02 16:46:08 by pstringe          #+#    #+#             */
+/*   Updated: 2018/04/02 16:53:15 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_is_whitespace(int c)
+int ft_lstlen(t_list *lst)
 {
-	if (c == '\n' || c == '\v' || c == '\f')
+	t_list	*tmp;
+	int		i;
+	
+	tmp = lst;
+	i = 0;
+	while (tmp)
 	{
-		return (1);
+		i++;
+		tmp = tmp->next;
 	}
-	if (c == ' ' || c == '\r' || c == '\t')
-	{
-		return (1);
-	}
-	return (0);
+	return (1);
 }
