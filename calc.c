@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 10:04:47 by pstringe          #+#    #+#             */
-/*   Updated: 2018/04/04 10:44:20 by pstringe         ###   ########.fr       */
+/*   Updated: 2018/04/04 11:29:48 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,35 @@ char	*g_x;
 /*
 **	this function is responsible for decting a didgit and transforming it into an integer,
 **	this first version will only work with single digits, but the goal is, to eventually 
-**	parse numbers of any size and transform them into a bignum struct. 
+**	parse numbers of any size and transform them into a bignum struct.
+**	---------------------------------------------------------------------
+**	
+**	in order to parse parenthetic expressions, one must redefine what a factor can be.
+**	if the pointer encounters and opening grouping symbol, the parser must be ready to 
+**	parse an arbitrarily complex expression, in order of operator precedence, starting i
+**	with the most loosley bound evaluation function.
 */
 
 int		parse_factor()
 {
+	int		sum;
+
 	if (*g_x >= '0' && *g_x <= '9')
-		return (*g_x++ - '0'); // we return the current index, and increment the pointer if *x is a digit
+		return (*g_x++ - '0'); 	// we return the current index, and increment the pointer if *x is a digit
+	else if (*g_x == '(')
+	{
+		++g_x;					//consume opener
+		sum = parse_sum();		//here sum will eventually return the evaluation results terminal values through 
+								//to recursive calls to itself, via other parsing functions.
+		++g_x;					//here we automatically consume the closing paren for simplicity, in final version,
+								//error checking will be vital to make sure this is a closing paren.
+		return (sum);
+	}
 	else
 	{
-		ft_putendl("digit expected, found: ");
+		ft_putstr("digit expected, found: ");
 		ft_putchar(*g_x);
+		ft_putchar('\n');
 	}
 	return (-1);
 }
@@ -61,9 +79,9 @@ int		parse_product()
 	int	f_2;
 
 	f_1 = parse_factor();
-	while (*x == '*')
+	while (*g_x == '*')
 	{
-		++x;
+		++g_x;
 		f_2 = parse_factor();
 		f_1 *= f_2;
 	}
@@ -82,9 +100,9 @@ int		parse_sum()
 	int p_2;
 
 	p_1 = parse_product();
-	while (*x == '+')
+	while (*g_x == '+')
 	{
-		++x;
+		++g_x;
 		p_2 = parse_product();
 		p_1 += p_2;
 	}
@@ -100,7 +118,8 @@ int		main()
 {
 	int		result;
 
-	g_x = "2*3+5";
-	result = parse_factor();
+	g_x = "2*(3+4)";
+	result = parse_sum();
+	ft_putnbr(result);
 	return (0);
 }
