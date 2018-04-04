@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 10:04:47 by pstringe          #+#    #+#             */
-/*   Updated: 2018/04/04 12:01:54 by pstringe         ###   ########.fr       */
+/*   Updated: 2018/04/04 12:25:27 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,30 @@ char	*g_x;
 
 double		parse_number()
 {
-	double n = 0;
+	double n;
+	double w;
+	double s;
+
+	n = 0;
 	while (*g_x >= '0' && *g_x <= '9')
 	{
 		n *= 10;
 		n += *g_x - '0';
 		g_x++;
 	}
+	if (*g_x == '.')
+	{
+		++g_x;
+		w = 1;
+		while (*g_x >= '0' && *g_x <= '9')
+		{
+			w /= 10;
+			s = (*g_x - '0') * w;
+			n += s;
+			g_x++;
+		}
+	}
+
 	return (n);
 }
 
@@ -131,12 +148,14 @@ double		parse_sum()
 	return (p_1);
 }
 
+#include <stdio.h>
+
 int		main()
 {
 	double		result;
 
-	g_x = "(100+100)*2";
+	g_x = "999.99";
 	result = parse_sum();
-	ft_putnbr(result);
+	printf("%f\n", result);
 	return (0);
 }
