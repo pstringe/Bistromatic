@@ -6,16 +6,17 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 10:04:47 by pstringe          #+#    #+#             */
-/*   Updated: 2018/04/04 11:29:48 by pstringe         ###   ########.fr       */
+/*   Updated: 2018/04/04 12:01:54 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bistromatic.h"
 #include <stdlib.h>
 
-int		parse_sum();
-int		parse_product();
-int		parse_factor();
+double		parse_sum();
+double		parse_product();
+double		parse_factor();
+double		parse_number();
 
 /*
 **	this global var points to current position inside the string being parsed
@@ -31,6 +32,24 @@ int		parse_factor();
 char	*g_x;
 
 /*
+**	One step toward bignum functionality is to add multi-digit functionality. This function
+**	is called by parse_factor() to multidigit nums from the string, eventually this function
+**	will most likley be replaced by a parse bignum function.
+*/
+
+double		parse_number()
+{
+	double n = 0;
+	while (*g_x >= '0' && *g_x <= '9')
+	{
+		n *= 10;
+		n += *g_x - '0';
+		g_x++;
+	}
+	return (n);
+}
+
+/*
 **	this function is responsible for decting a didgit and transforming it into an integer,
 **	this first version will only work with single digits, but the goal is, to eventually 
 **	parse numbers of any size and transform them into a bignum struct.
@@ -42,19 +61,22 @@ char	*g_x;
 **	with the most loosley bound evaluation function.
 */
 
-int		parse_factor()
+double		parse_factor()
 {
-	int		sum;
+	double		sum;
 
 	if (*g_x >= '0' && *g_x <= '9')
-		return (*g_x++ - '0'); 	// we return the current index, and increment the pointer if *x is a digit
+		return (parse_number()); 	// we return the current index, and increment the 
+									// pointer if *x is a digit
 	else if (*g_x == '(')
 	{
-		++g_x;					//consume opener
-		sum = parse_sum();		//here sum will eventually return the evaluation results terminal values through 
-								//to recursive calls to itself, via other parsing functions.
-		++g_x;					//here we automatically consume the closing paren for simplicity, in final version,
-								//error checking will be vital to make sure this is a closing paren.
+		++g_x;						//consume opener
+		sum = parse_sum();			//here sum will eventually return the evaluation 
+									//results terminal values through 
+									//to recursive calls to itself, via other parsing functions.
+		++g_x;						//here we automatically consume the closing paren 
+									//for simplicity, in final version,
+									//error checking will be vital to make sure this is a closing paren.
 		return (sum);
 	}
 	else
@@ -69,14 +91,14 @@ int		parse_factor()
 /*
 **	parses products based on the next value being a multiplicationn operator. If no operator, just returns the number.
 **	this allows us to establish operator precedence by calling the product function from the sum function. That way, if 
-**	there is something to multiply, that will be done first, then addition. Later, instead of just multiplying, W'ell call
-**	our bignum multiplication operator.
+**	there is something to multiply, that will be done first, and then addition. Later, instead of just multiplying, 
+**	We'll call our bignum multiplication function.
 */
 
-int		parse_product()
+double		parse_product()
 {
-	int f_1;
-	int	f_2;
+	double f_1;
+	double	f_2;
 
 	f_1 = parse_factor();
 	while (*g_x == '*')
@@ -94,10 +116,10 @@ int		parse_product()
 **	addition function in the final function.
 */
 
-int		parse_sum()
+double		parse_sum()
 {
-	int p_1;
-	int p_2;
+	double p_1;
+	double p_2;
 
 	p_1 = parse_product();
 	while (*g_x == '+')
@@ -109,16 +131,11 @@ int		parse_sum()
 	return (p_1);
 }
 
-/*
-**
-**
-*/
-
 int		main()
 {
-	int		result;
+	double		result;
 
-	g_x = "2*(3+4)";
+	g_x = "(100+100)*2";
 	result = parse_sum();
 	ft_putnbr(result);
 	return (0);
