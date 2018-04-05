@@ -1,7 +1,8 @@
 CC = gcc
 INC = ./libft
 NAME = calc
-SRCS = calc.c
+SRCS = calc.c\
+	   parse.c
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 LIBD = -L$(INC) -lft
 CFLAGS = -Wall -Werror -Wextra -I$(INC) 
