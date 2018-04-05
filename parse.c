@@ -6,11 +6,17 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 18:47:06 by pstringe          #+#    #+#             */
-/*   Updated: 2018/04/04 18:49:32 by pstringe         ###   ########.fr       */
+/*   Updated: 2018/04/04 19:44:33 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bistromatic.h"
+
+void		skip_whitespace()
+{
+	while (*g_x == '\t' || *g_x == '\n' || *g_x == ' ')
+		g_x++;
+}
 
 /*
 **	One step toward bignum functionality is to add multi-digit functionality. This function
@@ -63,17 +69,14 @@ double		parse_factor()
 	double		sum;
 
 	if (*g_x >= '0' && *g_x <= '9')
-		return (parse_number()); 	// we return the current index, and increment the 
-									// pointer if *x is a digit
+		return (parse_number());
 	else if (*g_x == '(')
 	{
-		++g_x;						//consume opener
-		sum = parse_sum();			//here sum will eventually return the evaluation 
-									//results terminal values through 
-									//to recursive calls to itself, via other parsing functions.
-		++g_x;						//here we automatically consume the closing paren 
-									//for simplicity, in final version,
-									//error checking will be vital to make sure this is a closing paren.
+		++g_x;
+		skip_whitespace();
+		sum = parse_sum();
+		++g_x;
+		skip_whitespace();
 		return (sum);
 	}
 	else
@@ -99,10 +102,12 @@ double		parse_product()
 	char 	op;
 
 	f_1 = parse_factor();
+	skip_whitespace();
 	while (*g_x == '*' || *g_x == '/' || *g_x == '%')
 	{
 		op = *g_x;
 		++g_x;
+		skip_whitespace();
 		f_2 = parse_factor();
 		if (op  == '*')
 			f_1 *= f_2;
@@ -127,10 +132,12 @@ double		parse_sum()
 	char	*op;
 
 	p_1 = parse_product();
+	skip_whitespace();
 	while (*g_x == '+' || *g_x == '-')
 	{
 		op = g_x;
 		++g_x;
+		skip_whitespace();
 		p_2 = parse_product();
 		if (*op == '-' && *(op + 1) != '(' && p_2 < 0)
 			ft_putendl("parse error: bc does not subtracton of negative values without parentheses");

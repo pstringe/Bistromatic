@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 09:48:45 by pstringe          #+#    #+#             */
-/*   Updated: 2018/04/04 18:43:25 by pstringe         ###   ########.fr       */
+/*   Updated: 2018/04/04 19:42:46 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,11 @@ double		parse_sum();
 double		parse_product();
 double		parse_factor();
 double		parse_number();
+
+/*
+**	this function is self explanatory
+*/
+
+void		skip_whitespace();
 
 #endif
