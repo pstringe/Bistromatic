@@ -6,7 +6,7 @@
 /*   By: pstringe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 10:04:47 by pstringe          #+#    #+#             */
-/*   Updated: 2018/04/04 12:25:27 by pstringe         ###   ########.fr       */
+/*   Updated: 2018/04/04 18:28:25 by pstringe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ double		parse_factor();
 double		parse_number();
 
 /*
-**	this global var points to current position inside the string being parsed
-**	for some reason the author of the tutorial I'm going off of felt the need to 
-**	make it global. I will remedy this at a later time.
+**	this global var points to current position inside the string being parsed.
 **	--------------------------------------------------------------------------
 **	
 **	Now I understand that this variable is global because it is neccessary for each function to
@@ -62,7 +60,6 @@ double		parse_number()
 			g_x++;
 		}
 	}
-
 	return (n);
 }
 
@@ -98,7 +95,7 @@ double		parse_factor()
 	}
 	else
 	{
-		ft_putstr("digit expected, found: ");
+		ft_putstr("parse error! digit expected, found: ");
 		ft_putchar(*g_x);
 		ft_putchar('\n');
 	}
@@ -114,48 +111,66 @@ double		parse_factor()
 
 double		parse_product()
 {
-	double f_1;
+	double 	f_1;
 	double	f_2;
+	char 	op;
 
 	f_1 = parse_factor();
-	while (*g_x == '*')
+	while (*g_x == '*' || *g_x == '/' || *g_x == '%')
 	{
+		op = *g_x;
 		++g_x;
 		f_2 = parse_factor();
-		f_1 *= f_2;
+		if (op  == '*')
+			f_1 *= f_2;
+		else if (op == '/')
+			f_1 /= f_2;
+		else if (op == '%')
+			ft_putendl("parse error: modulo not supported in this version");
 	}
 	return (f_1);
 }
 
 /*
-**	parse sum will calls the parse_product function to get its two addends, garunteeing numbers 
-**	to work with so long as the string is valid. Again, the logic is the same here but we will call a bignu, 
-**	addition function in the final function.
+**	parse sum will calls the parse_product function to get its two addends, garanteeing numbers 
+**	to work with so long as the string is valid. Again, the logic is the same here but we will 
+**	call a bignum addition function in the final function.
 */
 
 double		parse_sum()
 {
-	double p_1;
-	double p_2;
+	double 	p_1;
+	double 	p_2;
+	char	*op;
 
 	p_1 = parse_product();
-	while (*g_x == '+')
+	while (*g_x == '+' || *g_x == '-')
 	{
+		op = g_x;
 		++g_x;
 		p_2 = parse_product();
-		p_1 += p_2;
+		if (*op == '-' && *(op + 1) != '(' && p_2 < 0)
+			ft_putendl("parse error: bc does not subtracton of negative values without parentheses");
+		else if (*op == '+')
+			p_1 += p_2;
+		else if (*op == '-')
+			p_1 -= p_2;
 	}
 	return (p_1);
 }
 
 #include <stdio.h>
 
-int		main()
+int		main(int argc, char **argv)
 {
 	double		result;
 
-	g_x = "999.99";
-	result = parse_sum();
-	printf("%f\n", result);
+	if (argc == 2)
+	{
+		g_x = argv[1];
+		result = parse_sum();
+		printf("%f\n", result);
+	}
+	write(1, "\n", 1);
 	return (0);
 }
